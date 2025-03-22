@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D'Annas Calçados - O melhor para os seus pés</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            background-color: #ffffff;
+        }
+
+        header .carousel {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        header .carousel img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        header .slogan {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 36px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        .carousel-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .carousel-controls button {
+            background-color: transparent;
+            border: none;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .carousel-controls button:hover {
+            color: #E76F51;
+        }
+
+        .product-section {
+            padding: 50px 10%;
+            text-align: center;
+        }
+
+        .product-section h2 {
+            font-size: 36px;
+            color: #FF6F61;
+            margin-bottom: 20px;
+        }
+
+        .product-carousel {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            scroll-snap-type: x mandatory;
+            padding-bottom: 20px;
+            justify-content: center;
+        }
+
+        .product-carousel::-webkit-scrollbar {
+            display: none;
+        }
+
+        .product {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 200px;
+            padding: 10px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product img {
+            width: 100%;
+            border-radius: 8px;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .product h3 {
+            font-size: 18px;
+            margin: 15px 0;
+        }
+
+        .product p {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .product span {
+            font-size: 16px;
+            font-weight: bold;
+            color: #E76F51;
+        }
+
+        .product:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .product .size-buttons {
+            margin-top: 10px;
+        }
+
+        .product .size-buttons button {
+            padding: 5px 10px;
+            margin: 5px;
+            border: 2px solid #333;
+            background-color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .product .size-buttons button:hover {
+            background-color: #FF6F61;
+            color: #fff;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .contato p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .contato a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .contato a:hover {
+            color: #FF6F61;
+        }
+
+        .followers-count {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 20px;
+            color: #333;
+        }
+
+        .followers-count span {
+            font-weight: bold;
+            color: #f5a700;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">D'Annas Calçados</div>
+        <div class="carousel">
+            <img src="logo DN.jpg">
+        </div>
+        <div class="carousel-controls">
+            <button id="prev" onclick="moveCarousel(-1)">&#10094;</button>
+            <button id="next" onclick="moveCarousel(1)">&#10095;</button>
+        </div>
+    </header>
+<input type="text" id="search-bar" placeholder="Buscar produto..." oninput="searchProduct()">
+<div id="product-list">
+    <!-- Produtos aqui -->
+</div>
+
+<script>
+    function searchProduct() {
+        const searchTerm = document.getElementById("search-bar").value.toLowerCase();
+        const products = document.querySelectorAll(".product");
+
+        products.forEach(product => {
+            const name = product.querySelector("h3").textContent.toLowerCase();
+            if (name.includes(searchTerm)) {
+                product.style.display = "block";
+            } else {
+                product.style.display = "none";
+            }
+        });
+    }
+</script>
+
+    <div class="followers-count">
+        <p>Já somos <span id="followers-count">904</span> seguidores no instagram!</p>
+    </div>
+
+    <section class="product-section" id="masculino" style="background-color: #2A3D66;">
+        <h2>Linha Masculina</h2>
+        <div class="product-carousel">
+            <div class="product">
+                <img src="OLD.jpg" alt="Tênis Skate Old Skool">
+                <h3>Old Skool</h3>
+                <p>Tênis Skate Old Skool 36+ Black White</p>
+                <span>R$ 259,90</span>
+                <div class="size-buttons">
+                    <button>38</button>
+                    <button>39</button>
+                    <button>40</button>
+                    <button>41</button>
+                    <button>42</button>
+                </div>
+            </div>
+        </div>
+        <div class="product-carousel-controls">
+            <button onclick="moveProductCarousel(-1)">&#10094;</button>
+            <button onclick="moveProductCarousel(1)">&#10095;</button>
+        </div>
+    </section>
+
+    <section class="product-section" id="feminino" style="background-color: #F3C2D1;">
+        <h2>Linha Feminina</h2>
+        <div class="product-carousel">
+            <div class="product">
+                <img src="All star.jpg" alt="Tênis All Star Preto Bordado">
+                <h3>All Star</h3>
+                <p>Tênis All Star Preto Bordado com Margaridas</p>
+                <span>R$ 149,90</span>
+                <div class="size-buttons">
+                    <button>34</button>
+                    <button>35</button>
+                    <button>36</button>
+                    <button>37</button>
+                    <button>38</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="ACTVITTA.jpg" alt="Actvitta move esportivo feminino">
+                <h3>Actvitta feminino</h3>
+                <p>Actvitta move esportivo feminino</p>
+                <span>R$ 189,99</span>
+                <div class="size-buttons">
+                    <button>34</button>
+                    <button>35</button>
+                    <button>36</button>
+                    <button>37</button>
+                    <button>38</button>
+                </div>
+            </div>
+        </div>
+        <div class="product-carousel-controls">
+            <button onclick="moveProductCarousel(-1)">&#10094;</button>
+            <button onclick="moveProductCarousel(1)">&#10095;</button>
+        </div>
+    </section>
+
+    <section class="product-section" id="infantil" style="background-color: #F6D4C2;">
+        <h2>Linha Infantil</h2>
+        <div class="product-carousel">
+            <div class="product">
+                <img src="INFANTIL MOLEKINHA.jpg" alt="Tênis infantil molekinho">
+                <h3>Tênis infantil molekinho</h3>
+                <p>Molekinho calce fácil</p>
+                <span>R$ 129,90</span>
+                <div class="size-buttons">
+                    <button>25</button>
+                    <button>26</button>
+                    <button>27</button>
+                    <button>28</button>
+                    <button>29</button>
+                </div>
+            </div>
+        </div>
+        <div class="product-carousel-controls">
+            <button onclick="moveProductCarousel(-1)">&#10094;</button>
+            <button onclick="moveProductCarousel(1)">&#10095;</button>
+        </div>
+    </section>
+
+    <footer>
+        <div class="contato">
+            <p><strong>Instagram:</strong> <a href="https://www.instagram.com/dannas_calcados_/" target="_blank">@dannascalcados</a></p>
+            <p><strong>Telefone:</strong> <a href="tel:+5561998529829">61 99852-9829</a></p>
+        </div>
+    </footer>
+
+    <script>
+        let currentSlide = 0;
+
+        function moveCarousel(direction) {
+            const carousel = document.querySelector('.carousel');
+            const slides = document.querySelectorAll('.carousel img');
+            currentSlide = (currentSlide + direction + slides.length) % slides.length;
+            carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        function moveProductCarousel(direction) {
+            const productCarousel = document.querySelector('.product-carousel');
+            productCarousel.scrollLeft += direction * 220;
+        }
+    </script>
+</body>
+</html>
